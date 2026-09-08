@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { Header, Film, Footer } from './ui';
 import { media } from '../lib/content';
 import { getProjects } from '../lib/sanity';
@@ -39,11 +38,11 @@ export default async function Home() {
           </p>
           <div className="about-bottom">
             <span>FILM, IMAGE & CREATIVE DIRECTION</span>
-            <Link href="/work/">EXPLORE OUR WORK ↗</Link>
+            <a href="/work/">EXPLORE OUR WORK ↗</a>
           </div>
         </section>
         <section className="featured">
-          <Link href={'/work/' + projects[0].slug + '/'}>
+          <a href={'/work/' + projects[0].slug + '/'}>
             <img
               src={projects[0].images[0]}
               alt={projects[0].title}
@@ -53,7 +52,7 @@ export default async function Home() {
               <span>SELECTED WORK / 01</span>
               <h2>{projects[0].title} ↗</h2>
             </div>
-          </Link>
+          </a>
         </section>
       </main>
       <Footer />

@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getProject, getProjects } from '../../../lib/sanity';
 import { Header, Footer } from '../../ui';
@@ -31,7 +30,7 @@ export default async function Detail({
           <img src={p.images[0]} alt={p.title} />
         </div>
         <section className="detail-intro">
-          <Link href="/work/">← ALL WORK</Link>
+          <a href="/work/">← ALL WORK</a>
           <h1>{p.title}</h1>
           <div className="detail-meta">
             <p>{p.description}</p>
@@ -52,9 +51,9 @@ export default async function Detail({
             />
           ))}
         </div>
-        <Link className="all-work" href="/work/">
+        <a className="all-work" href="/work/">
           BACK TO ALL WORK ↗
-        </Link>
+        </a>
       </main>
       <Footer />
     </>

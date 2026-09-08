@@ -1,5 +1,4 @@
 'use client';
-import Link from 'next/link';
 import { useState } from 'react';
 import { tags, type Project } from '../../lib/content';
 import { filterProjects } from '../../lib/filter.mjs';
@@ -34,14 +33,14 @@ export default function WorkList({ projects }: { projects: Project[] }) {
         selected.map((p, i) => (
           <article className="project-row" key={p.slug}>
             <div className="project-heading">
-              <Link href={'/work/' + p.slug + '/'}>
+              <a href={'/work/' + p.slug + '/'}>
                 <span className="project-number">0{i + 1}</span>
                 <h2>{p.title}</h2>
                 <span className="project-subtitle">{p.subtitle}</span>
-              </Link>
+              </a>
               <span>{p.date} ↗</span>
             </div>
-            <Link
+            <a
               className="project-strip"
               href={'/work/' + p.slug + '/'}
               aria-label={p.title + ' 프로젝트 보기'}
@@ -66,7 +65,7 @@ export default function WorkList({ projects }: { projects: Project[] }) {
                   </div>
                 ))}
               </div>
-            </Link>
+            </a>
             <div className="project-tags">
               {p.tags.map((t) => (
                 <button key={t} onClick={() => setTag(t)}>

@@ -1,5 +1,4 @@
 'use client';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
@@ -11,18 +10,18 @@ export function Header() {
         본문 바로가기
       </a>
       <header className="header">
-        <Link href="/" className="wordmark" aria-label="EWOTE HOME">
+        <a href="/" className="wordmark" aria-label="EWOTE HOME">
           EWOTE
-        </Link>
+        </a>
         <nav aria-label="메인 메뉴">
-          <Link href="/#about">ABOUT</Link>
-          <Link
+          <a href="/#about">ABOUT</a>
+          <a
             aria-current={path.startsWith('/work') ? 'page' : undefined}
             href="/work/"
           >
             WORK
-          </Link>
-          <Link href="/#contact">CONTACT</Link>
+          </a>
+          <a href="/#contact">CONTACT</a>
         </nav>
         <span className="header-index">
           CREATIVE
@@ -74,9 +73,9 @@ export function Footer() {
         <p className="contact-placeholder">연락처는 준비 중입니다.</p>
       </div>
       <div className="footer-line">
-        <Link href="/" className="wordmark">
+        <a href="/" className="wordmark">
           EWOTE
-        </Link>
+        </a>
         <span>© 2026 EWOTE</span>
         <a href="#main">BACK TO TOP ↑</a>
       </div>
