@@ -12,4 +12,5 @@ export const physicsOptions: {
   frictionStatic: number;
   frictionAir: number;
   density: number;
+  floorBleed: number;
 };

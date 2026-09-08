@@ -15,6 +15,7 @@ test('letters use restrained physical collision settings', () => {
   assert.ok(physicsOptions.restitution <= 0.12);
   assert.ok(physicsOptions.friction >= 0.5);
   assert.ok(physicsOptions.frictionAir >= 0.015);
+  assert.ok(physicsOptions.floorBleed > 0);
 });
 
 test('home hero fills the viewport on every screen size', () => {

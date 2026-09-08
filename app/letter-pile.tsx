@@ -94,7 +94,9 @@ export function LetterPile() {
         const element = letterRefs.current[index];
         const size = sizes[index];
         if (!element || !size) return;
-        element.style.transform = `translate3d(${body.position.x - size.width / 2}px, ${body.position.y - size.height * 0.56}px, 0) rotate(${body.angle}rad)`;
+        const visualY =
+          body.position.y - size.height * (0.56 - physicsOptions.floorBleed);
+        element.style.transform = `translate3d(${body.position.x - size.width / 2}px, ${visualY}px, 0) rotate(${body.angle}rad)`;
       });
       frame = requestAnimationFrame(update);
     };
