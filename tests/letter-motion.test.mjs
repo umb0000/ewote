@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
 import { letterMotion } from '../lib/letter-motion.mjs';
 
 test('letters fall one at a time in reading order', () => {
@@ -14,4 +15,18 @@ test('every letter rolls before settling', () => {
     assert.ok(Math.abs(motion.rollX) >= 18);
     assert.ok(Math.abs(motion.startRotate - motion.restRotate) >= 90);
   }
+});
+
+test('home hero fills the viewport on every screen size', () => {
+  const css = readFileSync(
+    new URL('../app/globals.css', import.meta.url),
+    'utf8',
+  );
+  const heroRules = [...css.matchAll(/\.home-hero\s*\{([^}]+)\}/g)].map(
+    (match) => match[1],
+  );
+
+  assert.ok(heroRules.length >= 1);
+  assert.ok(heroRules.every((rule) => /height:\s*100svh/.test(rule)));
+  assert.ok(heroRules.every((rule) => !/max-height:/.test(rule)));
 });

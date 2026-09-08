@@ -112,8 +112,8 @@ button {
   letter-spacing: 0.02em;
 }
 .home-hero {
-  height: min(850px, 95svh);
-  min-height: 570px;
+  height: 100vh;
+  height: 100svh;
   position: relative;
   overflow: hidden;
   background: #000;
@@ -137,7 +137,7 @@ button {
 .letter > span {
   display: block;
   transform-origin: 50% 82%;
-  animation: letter-fall-roll 2.65s linear both;
+  animation: letter-fall-roll 2.9s linear both;
   animation-delay: var(--delay);
   will-change: transform;
 }
@@ -485,32 +485,40 @@ footer h2 {
 }
 @keyframes letter-fall-roll {
   0% {
-    transform: translate3d(var(--drop-x), -125vh, 0) rotate(var(--start-rotate));
-    animation-timing-function: cubic-bezier(0.3, 0, 0.78, 0.58);
+    transform: translate3d(var(--drop-x), -125svh, 0)
+      rotate(var(--start-rotate)) scaleX(1) scaleY(1);
+    animation-timing-function: cubic-bezier(0.42, 0, 0.92, 0.58);
   }
-  52% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
-    animation-timing-function: cubic-bezier(0.18, 0.78, 0.32, 1);
+  50% {
+    transform: translate3d(0, 0, 0) rotate(0deg) scaleX(1.06) scaleY(0.91);
+    animation-timing-function: cubic-bezier(0.12, 0.72, 0.28, 1);
   }
-  64% {
-    transform: translate3d(var(--roll-x), -14%, 0) rotate(var(--roll-rotate));
-    animation-timing-function: cubic-bezier(0.38, 0, 0.62, 1);
+  59% {
+    transform: translate3d(var(--roll-x), -16%, 0) rotate(var(--roll-rotate))
+      scaleX(0.98) scaleY(1.02);
+    animation-timing-function: cubic-bezier(0.48, 0, 0.72, 0.48);
   }
-  76% {
-    transform: translate3d(var(--rebound-x), 0, 0) rotate(var(--rebound-rotate));
-    animation-timing-function: cubic-bezier(0.18, 0.8, 0.38, 1);
+  70% {
+    transform: translate3d(var(--rebound-x), 0, 0) rotate(var(--rebound-rotate))
+      scaleX(1.025) scaleY(0.965);
+    animation-timing-function: cubic-bezier(0.16, 0.68, 0.3, 1);
   }
-  84% {
+  79% {
     transform: translate3d(var(--kickback-x), -5%, 0)
-      rotate(var(--kickback-rotate));
-    animation-timing-function: cubic-bezier(0.38, 0, 0.62, 1);
+      rotate(var(--kickback-rotate)) scaleX(0.995) scaleY(1.005);
+    animation-timing-function: cubic-bezier(0.42, 0, 0.68, 0.5);
   }
-  92% {
-    transform: translate3d(var(--settle-x), 0, 0) rotate(var(--settle-rotate));
+  88% {
+    transform: translate3d(var(--settle-x), 0, 0) rotate(var(--settle-rotate))
+      scaleX(1.008) scaleY(0.992);
+    animation-timing-function: cubic-bezier(0.2, 0.7, 0.3, 1);
+  }
+  95% {
+    transform: translate3d(0, -0.8%, 0) rotate(0deg) scaleX(1) scaleY(1);
     animation-timing-function: ease-out;
   }
   100% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
+    transform: translate3d(0, 0, 0) rotate(0deg) scaleX(1) scaleY(1);
   }
 }
 @keyframes flow {
@@ -523,9 +531,6 @@ footer h2 {
     width: 1250px;
     height: 680px;
     max-height: 680px;
-  }
-  .home-hero {
-    height: 1000px;
   }
 }
 @media (max-width: 700px) {
@@ -544,8 +549,7 @@ footer h2 {
     font-size: 22px;
   }
   .home-hero {
-    min-height: 560px;
-    height: 82svh;
+    height: 100svh;
   }
   .letter-pile {
     left: 3%;
