@@ -3,7 +3,6 @@ export type LetterMotion = {
   spawnX: number;
   startRotate: number;
   restRotate: number;
-  floorBleed: number;
 };
 
 export const letterMotion: LetterMotion[];
@@ -13,4 +12,6 @@ export const physicsOptions: {
   frictionStatic: number;
   frictionAir: number;
   density: number;
+  pileWidthRatio: number;
+  glyphBaselineTrim: number;
 };

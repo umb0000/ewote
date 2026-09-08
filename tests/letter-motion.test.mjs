@@ -15,12 +15,13 @@ test('letters use restrained physical collision settings', () => {
   assert.ok(physicsOptions.restitution <= 0.12);
   assert.ok(physicsOptions.friction >= 0.5);
   assert.ok(physicsOptions.frictionAir >= 0.015);
+  assert.ok(physicsOptions.pileWidthRatio <= 0.75);
+  assert.ok(physicsOptions.glyphBaselineTrim > 0);
 });
 
-test('W compensates for its deeper font bottom spacing', () => {
-  assert.ok(letterMotion[1].floorBleed > letterMotion[0].floorBleed);
-  assert.ok(letterMotion[0].floorBleed >= 0.09);
-  assert.equal(letterMotion[0].floorBleed, letterMotion[4].floorBleed);
+test('letters spawn together in the left half without per-glyph spacing hacks', () => {
+  assert.ok(letterMotion.every((motion) => motion.spawnX <= 0.5));
+  assert.ok(letterMotion.every((motion) => !('floorBleed' in motion)));
 });
 
 test('home hero fills the viewport on every screen size', () => {
@@ -45,4 +46,23 @@ test('the lowest letter sits directly on the viewport floor', () => {
 
   assert.match(css, /\.letter-pile\s*\{[^}]*bottom:\s*0;/s);
   assert.match(css, /\.letter-floor\s*\{[^}]*bottom:\s*0;/s);
+});
+
+test('hero letters are scaled to one and a half times their original size', () => {
+  const css = readFileSync(
+    new URL('../app/globals.css', import.meta.url),
+    'utf8',
+  );
+
+  assert.match(css, /font-size:\s*clamp\(195px,\s*36vw,\s*585px\)/);
+  assert.match(css, /font-size:\s*45vw/);
+});
+
+test('glyph collision boxes trim invisible font leading', () => {
+  const source = readFileSync(
+    new URL('../app/letter-pile.tsx', import.meta.url),
+    'utf8',
+  );
+
+  assert.match(source, /bodyHeight\s*=\s*rect\.height\s*\*\s*0\.82/);
 });
