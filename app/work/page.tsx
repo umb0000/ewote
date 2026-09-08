@@ -1,8 +1,10 @@
 import { Header, Film, Footer } from '../ui';
 import { media } from '../../lib/content';
+import { getProjects } from '../../lib/sanity';
 import WorkList from './work-list';
 export const metadata = { title: 'WORK — EWOTE' };
-export default function Work() {
+export default async function Work() {
+  const projects = await getProjects();
   return (
     <>
       <Header />
@@ -18,7 +20,7 @@ export default function Work() {
             <h1>WORK</h1>
           </div>
         </section>
-        <WorkList />
+        <WorkList projects={projects} />
       </main>
       <Footer />
     </>

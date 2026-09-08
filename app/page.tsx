@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import { Header, Film, Footer } from './ui';
-import { media, projects } from '../lib/content';
+import { media } from '../lib/content';
+import { getProjects } from '../lib/sanity';
 import { LetterPile } from './letter-pile';
-export default function Home() {
+export default async function Home() {
+  const projects = await getProjects();
   return (
     <>
       <Header />

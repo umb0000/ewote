@@ -1,9 +1,9 @@
 'use client';
 import Link from 'next/link';
 import { useState } from 'react';
-import { projects, tags } from '../../lib/content';
+import { tags, type Project } from '../../lib/content';
 import { filterProjects } from '../../lib/filter.mjs';
-export default function WorkList() {
+export default function WorkList({ projects }: { projects: Project[] }) {
   const [tag, setTag] = useState('ALL');
   const [paused, setPaused] = useState(false);
   const selected = filterProjects(projects, tag);

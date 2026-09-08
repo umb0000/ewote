@@ -19,7 +19,17 @@ export const tags = [
   'PHOTO',
   'GRAPHIC DESIGN',
 ];
-export const projects = [
+export type Project = {
+  slug: string;
+  title: string;
+  subtitle: string;
+  date: string;
+  tags: string[];
+  images: string[];
+  description: string;
+};
+
+export const projects: Project[] = [
   {
     slug: 'between-tides',
     title: 'BETWEEN TIDES',

@@ -1,0 +1,20 @@
+{
+  "name": "ewote-studio",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "sanity dev",
+    "build": "sanity build",
+    "deploy": "sanity deploy"
+  },
+  "dependencies": {
+    "@sanity/vision": "6.13.0",
+    "sanity": "6.13.0",
+    "styled-components": "6.5.3",
+    "react": "19.2.6",
+    "react-dom": "19.2.6"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  }
+}

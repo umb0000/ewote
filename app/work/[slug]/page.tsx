@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { projects } from '../../../lib/content';
+import { getProject, getProjects } from '../../../lib/sanity';
 import { Header, Footer } from '../../ui';
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const projects = await getProjects();
   return projects.map((p) => ({ slug: p.slug }));
 }
 export async function generateMetadata({
@@ -11,7 +12,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const p = projects.find((p) => p.slug === slug);
+  const p = await getProject(slug);
   return { title: p ? `${p.title} — EWOTE` : 'Project — EWOTE' };
 }
 export default async function Detail({
@@ -20,7 +21,7 @@ export default async function Detail({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const p = projects.find((p) => p.slug === slug);
+  const p = await getProject(slug);
   if (!p) notFound();
   return (
     <>
