@@ -136,38 +136,35 @@ button {
 }
 .letter > span {
   display: block;
-  animation: drop 1.35s cubic-bezier(0.2, 0.75, 0.3, 1.05) both;
+  transform-origin: 50% 82%;
+  animation: letter-fall-roll 2.65s linear both;
   animation-delay: var(--delay);
+  will-change: transform;
 }
 .letter-0 {
   left: 0;
   top: 0;
   transform: rotate(-24deg);
-  --delay: 0.1s;
 }
 .letter-1 {
   left: 28%;
   top: 44%;
   transform: rotate(20deg);
-  --delay: 0.55s;
 }
 .letter-2 {
   left: 0;
   top: 48%;
   transform: rotate(24deg);
-  --delay: 0.3s;
 }
 .letter-3 {
   left: 37%;
   top: 13%;
   transform: rotate(-28deg);
-  --delay: 0.8s;
 }
 .letter-4 {
   left: 64%;
   top: 53%;
   transform: rotate(-19deg);
-  --delay: 1.05s;
 }
 .hero-note {
   position: absolute;
@@ -486,18 +483,34 @@ footer h2 {
 .footer-line .wordmark {
   font-size: 22px;
 }
-@keyframes drop {
+@keyframes letter-fall-roll {
   0% {
-    transform: translateY(-120vh) rotate(-30deg);
+    transform: translate3d(var(--drop-x), -125vh, 0) rotate(var(--start-rotate));
+    animation-timing-function: cubic-bezier(0.3, 0, 0.78, 0.58);
   }
-  70% {
-    transform: translateY(8%) rotate(4deg);
+  52% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    animation-timing-function: cubic-bezier(0.18, 0.78, 0.32, 1);
   }
-  85% {
-    transform: translateY(-4%) rotate(-2deg);
+  64% {
+    transform: translate3d(var(--roll-x), -14%, 0) rotate(var(--roll-rotate));
+    animation-timing-function: cubic-bezier(0.38, 0, 0.62, 1);
+  }
+  76% {
+    transform: translate3d(var(--rebound-x), 0, 0) rotate(var(--rebound-rotate));
+    animation-timing-function: cubic-bezier(0.18, 0.8, 0.38, 1);
+  }
+  84% {
+    transform: translate3d(var(--kickback-x), -5%, 0)
+      rotate(var(--kickback-rotate));
+    animation-timing-function: cubic-bezier(0.38, 0, 0.62, 1);
+  }
+  92% {
+    transform: translate3d(var(--settle-x), 0, 0) rotate(var(--settle-rotate));
+    animation-timing-function: ease-out;
   }
   100% {
-    transform: translateY(0) rotate(0);
+    transform: translate3d(0, 0, 0) rotate(0deg);
   }
 }
 @keyframes flow {

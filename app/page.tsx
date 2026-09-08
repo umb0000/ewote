@@ -1,6 +1,8 @@
 import Link from 'next/link';
+import type { CSSProperties } from 'react';
 import { Header, Film, Footer } from './ui';
 import { media, projects } from '../lib/content';
+import { letterMotion } from '../lib/letter-motion.mjs';
 export default function Home() {
   return (
     <>
@@ -9,7 +11,26 @@ export default function Home() {
         <section className="home-hero">
           <h1 className="letter-pile" aria-label="EWOTE">
             {['E', 'W', 'O', 'T', 'E'].map((letter, i) => (
-              <span aria-hidden="true" className={'letter letter-' + i} key={i}>
+              <span
+                aria-hidden="true"
+                className={'letter letter-' + i}
+                key={i}
+                style={
+                  {
+                    '--delay': `${letterMotion[i].delay}s`,
+                    '--drop-x': `${letterMotion[i].dropX}px`,
+                    '--roll-x': `${letterMotion[i].rollX}px`,
+                    '--rebound-x': `${letterMotion[i].reboundX}px`,
+                    '--start-rotate': `${letterMotion[i].startRotate}deg`,
+                    '--roll-rotate': `${letterMotion[i].rollRotate}deg`,
+                    '--rebound-rotate': `${letterMotion[i].rollRotate * 0.34}deg`,
+                    '--kickback-x': `${letterMotion[i].reboundX * -0.35}px`,
+                    '--kickback-rotate': `${letterMotion[i].rollRotate * -0.12}deg`,
+                    '--settle-x': `${letterMotion[i].reboundX * 0.12}px`,
+                    '--settle-rotate': `${letterMotion[i].rollRotate * 0.035}deg`,
+                  } as CSSProperties
+                }
+              >
                 <span>{letter}</span>
               </span>
             ))}
