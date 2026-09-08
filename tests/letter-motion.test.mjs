@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { letterMotion } from '../lib/letter-motion.mjs';
+import { letterMotion, physicsOptions } from '../lib/letter-motion.mjs';
 
 test('letters fall one at a time in reading order', () => {
   assert.equal(letterMotion.length, 5);
@@ -10,11 +10,11 @@ test('letters fall one at a time in reading order', () => {
   }
 });
 
-test('every letter rolls before settling', () => {
-  for (const motion of letterMotion) {
-    assert.ok(Math.abs(motion.rollX) >= 18);
-    assert.ok(Math.abs(motion.startRotate - motion.restRotate) >= 90);
-  }
+test('letters use restrained physical collision settings', () => {
+  assert.ok(physicsOptions.restitution > 0);
+  assert.ok(physicsOptions.restitution <= 0.12);
+  assert.ok(physicsOptions.friction >= 0.5);
+  assert.ok(physicsOptions.frictionAir >= 0.015);
 });
 
 test('home hero fills the viewport on every screen size', () => {
@@ -29,4 +29,14 @@ test('home hero fills the viewport on every screen size', () => {
   assert.ok(heroRules.length >= 1);
   assert.ok(heroRules.every((rule) => /height:\s*100svh/.test(rule)));
   assert.ok(heroRules.every((rule) => !/max-height:/.test(rule)));
+});
+
+test('the lowest letter sits directly on the viewport floor', () => {
+  const css = readFileSync(
+    new URL('../app/globals.css', import.meta.url),
+    'utf8',
+  );
+
+  assert.match(css, /\.letter-pile\s*\{[^}]*bottom:\s*0;/s);
+  assert.match(css, /\.letter-floor\s*\{[^}]*bottom:\s*0;/s);
 });

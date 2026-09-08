@@ -120,51 +120,29 @@ button {
 }
 .letter-pile {
   position: absolute;
-  bottom: 7%;
-  left: 3%;
-  width: 72vw;
-  height: 40vw;
-  max-height: 560px;
+  inset: 0;
+  bottom: 0;
+  overflow: hidden;
   font-size: clamp(130px, 24vw, 390px);
   font-weight: 900;
   line-height: 0.8;
   letter-spacing: -0.12em;
 }
-.letter {
+.physics-letter {
   position: absolute;
   display: block;
-}
-.letter > span {
-  display: block;
-  transform-origin: 50% 82%;
-  animation: letter-fall-roll 2.9s linear both;
-  animation-delay: var(--delay);
+  top: 0;
+  left: 0;
+  line-height: 0.76;
+  transform-origin: center;
   will-change: transform;
 }
-.letter-0 {
+.letter-floor {
+  position: absolute;
+  bottom: 0;
   left: 0;
-  top: 0;
-  transform: rotate(-24deg);
-}
-.letter-1 {
-  left: 28%;
-  top: 44%;
-  transform: rotate(20deg);
-}
-.letter-2 {
-  left: 0;
-  top: 48%;
-  transform: rotate(24deg);
-}
-.letter-3 {
-  left: 37%;
-  top: 13%;
-  transform: rotate(-28deg);
-}
-.letter-4 {
-  left: 64%;
-  top: 53%;
-  transform: rotate(-19deg);
+  width: 100%;
+  height: 1px;
 }
 .hero-note {
   position: absolute;
@@ -526,13 +504,6 @@ footer h2 {
     transform: translateX(-50%);
   }
 }
-@media (min-width: 1800px) {
-  .letter-pile {
-    width: 1250px;
-    height: 680px;
-    max-height: 680px;
-  }
-}
 @media (max-width: 700px) {
   .header {
     padding: 23px 18px;
@@ -552,10 +523,6 @@ footer h2 {
     height: 100svh;
   }
   .letter-pile {
-    left: 3%;
-    bottom: 16%;
-    width: 89vw;
-    height: 52vw;
     font-size: 30vw;
   }
   .hero-note {
@@ -667,8 +634,11 @@ footer h2 {
   html {
     scroll-behavior: auto;
   }
-  .letter > span {
-    animation: none;
+  .physics-letter {
+    position: relative;
+    display: inline-block;
+    opacity: 1 !important;
+    transform: none !important;
   }
   .track {
     animation: none;

@@ -1,11 +1,15 @@
 export type LetterMotion = {
   delay: number;
-  dropX: number;
-  rollX: number;
-  reboundX: number;
+  spawnX: number;
   startRotate: number;
-  rollRotate: number;
   restRotate: number;
 };
 
 export const letterMotion: LetterMotion[];
+export const physicsOptions: {
+  restitution: number;
+  friction: number;
+  frictionStatic: number;
+  frictionAir: number;
+  density: number;
+};
