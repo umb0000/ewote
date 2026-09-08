@@ -1,0 +1,82 @@
+'use client';
+import Link from 'next/link';
+import { useState } from 'react';
+import { projects, tags } from '../../lib/content';
+import { filterProjects } from '../../lib/filter.mjs';
+export default function WorkList() {
+  const [tag, setTag] = useState('ALL');
+  const [paused, setPaused] = useState(false);
+  const selected = filterProjects(projects, tag);
+  return (
+    <section className={'work-list' + (paused ? ' paused' : '')}>
+      <div className="filter-bar">
+        <fieldset className="filters" aria-label="프로젝트 태그">
+          {tags.map((t) => (
+            <button key={t} aria-pressed={tag === t} onClick={() => setTag(t)}>
+              {t}
+            </button>
+          ))}
+        </fieldset>
+        <button
+          className="motion-toggle"
+          onClick={() => setPaused(!paused)}
+          aria-pressed={paused}
+        >
+          {paused ? '▶ MOTION' : 'Ⅱ MOTION'}
+        </button>
+      </div>
+      <output className="result-count">
+        {String(selected.length).padStart(2, '0')} PROJECTS / {tag}
+      </output>
+      {selected.length === 0 ? (
+        <p>해당 태그의 프로젝트가 없습니다.</p>
+      ) : (
+        selected.map((p, i) => (
+          <article className="project-row" key={p.slug}>
+            <div className="project-heading">
+              <Link href={'/work/' + p.slug + '/'}>
+                <span className="project-number">0{i + 1}</span>
+                <h2>{p.title}</h2>
+                <span className="project-subtitle">{p.subtitle}</span>
+              </Link>
+              <span>{p.date} ↗</span>
+            </div>
+            <Link
+              className="project-strip"
+              href={'/work/' + p.slug + '/'}
+              aria-label={p.title + ' 프로젝트 보기'}
+            >
+              <div className={'track ' + (i % 2 ? 'reverse' : '')}>
+                {[0, 1].map((copy) => (
+                  <div
+                    className="track-group"
+                    key={copy}
+                    aria-hidden={copy === 1 ? true : undefined}
+                  >
+                    {p.images.map((src, j) => (
+                      <img
+                        key={j}
+                        src={src}
+                        alt={copy === 0 ? `${p.title} 이미지 ${j + 1}` : ''}
+                        loading="lazy"
+                        width="640"
+                        height="400"
+                      />
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </Link>
+            <div className="project-tags">
+              {p.tags.map((t) => (
+                <button key={t} onClick={() => setTag(t)}>
+                  {t}
+                </button>
+              ))}
+            </div>
+          </article>
+        ))
+      )}
+    </section>
+  );
+}
