@@ -15,7 +15,12 @@ test('letters use restrained physical collision settings', () => {
   assert.ok(physicsOptions.restitution <= 0.12);
   assert.ok(physicsOptions.friction >= 0.5);
   assert.ok(physicsOptions.frictionAir >= 0.015);
-  assert.ok(physicsOptions.floorBleed > 0);
+});
+
+test('W compensates for its deeper font bottom spacing', () => {
+  assert.ok(letterMotion[1].floorBleed > letterMotion[0].floorBleed);
+  assert.ok(letterMotion[0].floorBleed >= 0.09);
+  assert.equal(letterMotion[0].floorBleed, letterMotion[4].floorBleed);
 });
 
 test('home hero fills the viewport on every screen size', () => {

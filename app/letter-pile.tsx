@@ -95,7 +95,8 @@ export function LetterPile() {
         const size = sizes[index];
         if (!element || !size) return;
         const visualY =
-          body.position.y - size.height * (0.56 - physicsOptions.floorBleed);
+          body.position.y -
+          size.height * (0.56 - letterMotion[index].floorBleed);
         element.style.transform = `translate3d(${body.position.x - size.width / 2}px, ${visualY}px, 0) rotate(${body.angle}rad)`;
       });
       frame = requestAnimationFrame(update);

@@ -179,17 +179,6 @@ button {
 .home-film .film {
   aspect-ratio: 16/9;
 }
-.video-control {
-  position: absolute;
-  bottom: 24px;
-  right: 28px;
-  border: 1px solid #ffffff75;
-  background: #0005;
-  padding: 11px 16px;
-  font-size: 11px;
-  letter-spacing: 0.05em;
-  z-index: 3;
-}
 .video-status {
   position: absolute;
   bottom: 24px;
@@ -276,9 +265,6 @@ button {
   font-weight: 600;
   letter-spacing: -0.08em;
   margin-top: 14px;
-}
-.work-hero .video-control {
-  bottom: 65px;
 }
 .work-list {
   padding: 0 32px 110px;
@@ -541,10 +527,6 @@ footer h2 {
   }
   .home-film .film {
     aspect-ratio: 4/5;
-  }
-  .video-control {
-    bottom: 18px;
-    right: 18px;
   }
   .about {
     padding: 65px 18px 35px;
