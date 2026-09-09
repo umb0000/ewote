@@ -1,3 +1,4 @@
 import { projectType } from './project';
+import { siteSettingsType } from './siteSettings';
 
-export const schemaTypes = [projectType];
+export const schemaTypes = [siteSettingsType, projectType];

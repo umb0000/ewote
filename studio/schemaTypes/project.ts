@@ -22,6 +22,8 @@ export const projectType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({ name: 'subtitle', title: 'Subtitle', type: 'string' }),
+    defineField({ name: 'order', title: 'Display order', type: 'number' }),
+    defineField({ name: 'youtubeUrl', title: 'YouTube URL', type: 'url' }),
     defineField({
       name: 'startDate',
       title: 'Start date',
