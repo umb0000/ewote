@@ -1,6 +1,7 @@
 'use client';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
+import { defaultSiteSettings, type SiteSettings } from '../lib/site-settings.mjs';
 
 export function Header() {
   const path = usePathname();
@@ -58,17 +59,17 @@ export function Film({
     </div>
   );
 }
-export function Footer() {
+export function Footer({ settings = defaultSiteSettings }: { settings?: SiteSettings }) {
   return (
     <footer id="contact">
       <div>
-        <span className="eyebrow">( CONTACT )</span>
+        <span className="eyebrow">{settings.contactEyebrow}</span>
         <h2>
-          LET’S MAKE
-          <br />
-          SOMETHING MOVE.
+          {settings.contactHeadingLines.map((line, index) => <span key={line}>{index > 0 && <br />}{line}</span>)}
         </h2>
-        <p className="contact-placeholder">연락처는 준비 중입니다.</p>
+        <p className="contact-placeholder">{settings.contactMessage}</p>
+        {settings.contactEmail && <a href={`mailto:${settings.contactEmail}`}>{settings.contactEmail}</a>}
+        {settings.socialLinks.map((link) => <a key={link.url} href={link.url} target="_blank" rel="noreferrer">{link.label}</a>)}
       </div>
       <div className="footer-line">
         <a href="/" className="wordmark">
