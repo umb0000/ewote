@@ -1,7 +1,8 @@
 import { notFound } from 'next/navigation';
-import { getProject, getProjects } from '../../../lib/sanity';
+import { getProject, getProjects, getSiteSettings } from '../../../lib/sanity';
 import { Header, Footer } from '../../ui';
 import { formatProjectPeriod } from '../../../lib/project-period.mjs';
+import { getYouTubeEmbedUrl } from '../../../lib/youtube.mjs';
 export async function generateStaticParams() {
   const projects = await getProjects();
   return projects.map((p) => ({ slug: p.slug }));
@@ -21,8 +22,9 @@ export default async function Detail({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const p = await getProject(slug);
+  const [p, settings] = await Promise.all([getProject(slug), getSiteSettings()]);
   if (!p) notFound();
+  const embedUrl = getYouTubeEmbedUrl(p.youtubeUrl);
   return (
     <>
       <Header />
@@ -34,14 +36,23 @@ export default async function Detail({
           <a href="/work/">← ALL WORK</a>
           <h1>{p.title}</h1>
           <div className="detail-meta">
-            <p>{p.description}</p>
-            <div>
+            <p className="detail-description">{p.description}</p>
+            <div className="detail-facts">
               <p>{formatProjectPeriod(p.startDate, p.endDate, p.date)}</p>
               <p>{p.tags.join(' / ')}</p>
-              <p>DEMO PROJECT</p>
             </div>
           </div>
         </section>
+        {embedUrl && (
+          <div className="youtube-embed">
+            <iframe
+              src={embedUrl}
+              title={`${p.title} video`}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
+        )}
         <div className="detail-gallery">
           {p.images.slice(1).map((src, i) => (
             <img
@@ -56,7 +67,7 @@ export default async function Detail({
           BACK TO ALL WORK ↗
         </a>
       </main>
-      <Footer />
+      <Footer settings={settings} />
     </>
   );
 }
