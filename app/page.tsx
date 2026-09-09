@@ -25,8 +25,6 @@ export default async function Home() {
             label="EWOTE showreel"
           />
           <div className="film-caption">
-            <span>EWOTE / SHOWREEL</span>
-            <span>PLAY ON REPEAT ↗</span>
           </div>
         </section>
         <section id="about" className="about">
@@ -49,7 +47,7 @@ export default async function Home() {
               loading="lazy"
             />
             <div className="featured-caption">
-              <span>SELECTED WORK / 01</span>
+              <span>WORK</span>
               <h2>{projects[0].title} ↗</h2>
             </div>
           </a>
