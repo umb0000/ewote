@@ -22,7 +22,39 @@ export const projectType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({ name: 'subtitle', title: 'Subtitle', type: 'string' }),
-    defineField({ name: 'date', title: 'Date', type: 'date', validation: (rule) => rule.required() }),
+    defineField({
+      name: 'startDate',
+      title: 'Start date',
+      description: 'The site displays the year and month only.',
+      type: 'date',
+      validation: (rule) =>
+        rule.custom((value, context) =>
+          value || context.document?.date
+            ? true
+            : 'Start date is required.',
+        ),
+    }),
+    defineField({
+      name: 'endDate',
+      title: 'End date',
+      description: 'Leave empty for a single month or an ongoing project.',
+      type: 'date',
+      validation: (rule) =>
+        rule.custom((value, context) => {
+          const start = context.document?.startDate;
+          return !value || !start || value >= start
+            ? true
+            : 'End date must be after the start date.';
+        }),
+    }),
+    defineField({
+      name: 'date',
+      title: 'Legacy date',
+      description: 'Kept temporarily for existing content.',
+      type: 'date',
+      hidden: ({ value }) => !value,
+      readOnly: true,
+    }),
     defineField({
       name: 'tags',
       title: 'Tags',

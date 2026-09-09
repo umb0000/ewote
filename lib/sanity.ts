@@ -8,11 +8,13 @@ export const sanityClient = createClient({
   useCdn: true,
 });
 
-const projectsQuery = `*[_type == "project" && defined(slug.current)] | order(date desc) {
+const projectsQuery = `*[_type == "project" && defined(slug.current)] | order(coalesce(startDate, date) desc) {
   title,
   "slug": slug.current,
   subtitle,
   date,
+  startDate,
+  endDate,
   tags,
   "images": images[].asset->url,
   description

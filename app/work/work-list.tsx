@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { tags, type Project } from '../../lib/content';
 import { filterProjects } from '../../lib/filter.mjs';
+import { formatProjectPeriod } from '../../lib/project-period.mjs';
 export default function WorkList({ projects }: { projects: Project[] }) {
   const [tag, setTag] = useState('ALL');
   const [paused, setPaused] = useState(false);
@@ -38,7 +39,7 @@ export default function WorkList({ projects }: { projects: Project[] }) {
                 <h2>{p.title}</h2>
                 <span className="project-subtitle">{p.subtitle}</span>
               </a>
-              <span>{p.date} ↗</span>
+              <span>{formatProjectPeriod(p.startDate, p.endDate, p.date)} ↗</span>
             </div>
             <a
               className="project-strip"

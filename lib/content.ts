@@ -23,7 +23,9 @@ export type Project = {
   slug: string;
   title: string;
   subtitle: string;
-  date: string;
+  date?: string;
+  startDate?: string;
+  endDate?: string;
   tags: string[];
   images: string[];
   description: string;

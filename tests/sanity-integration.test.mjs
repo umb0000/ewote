@@ -34,6 +34,8 @@ test('Studio schema exposes every portfolio field used by the site', () => {
     'slug',
     'subtitle',
     'date',
+    'startDate',
+    'endDate',
     'tags',
     'images',
     'description',

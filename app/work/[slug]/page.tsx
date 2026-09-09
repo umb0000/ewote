@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { getProject, getProjects } from '../../../lib/sanity';
 import { Header, Footer } from '../../ui';
+import { formatProjectPeriod } from '../../../lib/project-period.mjs';
 export async function generateStaticParams() {
   const projects = await getProjects();
   return projects.map((p) => ({ slug: p.slug }));
@@ -35,7 +36,7 @@ export default async function Detail({
           <div className="detail-meta">
             <p>{p.description}</p>
             <div>
-              <p>{p.date}</p>
+              <p>{formatProjectPeriod(p.startDate, p.endDate, p.date)}</p>
               <p>{p.tags.join(' / ')}</p>
               <p>DEMO PROJECT</p>
             </div>
