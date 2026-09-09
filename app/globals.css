@@ -290,6 +290,10 @@ button {
   padding: 8px 11px;
   border-radius: 0;
 }
+.filters button {
+  background: #303030;
+  color: #c4c4c4;
+}
 .filters button[aria-pressed='true'] {
   background: #f5f5f2;
   color: #111;
@@ -298,6 +302,9 @@ button {
 .project-tags button:hover {
   background: #55504c;
   color: white;
+}
+.filters button:hover {
+  background: #555;
 }
 .result-count {
   color: var(--muted);

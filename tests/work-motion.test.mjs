@@ -16,3 +16,13 @@ test('all work image tracks run continuously in one direction', () => {
   assert.doesNotMatch(styles, /\.reverse\s*\{|\.paused \.track/);
   assert.doesNotMatch(styles, /\.project-strip:hover \.track/);
 });
+
+test('work filter controls use a zero-saturation palette', () => {
+  const styles = readFileSync(
+    new URL('../app/globals.css', import.meta.url),
+    'utf8',
+  );
+
+  assert.match(styles, /\.filters button[\s\S]*background:\s*#303030/);
+  assert.match(styles, /\.filters button[\s\S]*color:\s*#c4c4c4/);
+});

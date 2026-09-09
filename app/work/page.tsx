@@ -16,7 +16,7 @@ export default async function Work() {
             label="EWOTE WORK showreel"
           />
           <div className="work-title">
-            <span className="eyebrow">( SELECTED PROJECTS )</span>
+            <span className="eyebrow">SEARCH</span>
             <h1>WORK</h1>
           </div>
         </section>
