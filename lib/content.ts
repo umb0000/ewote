@@ -26,6 +26,8 @@ export type Project = {
   date?: string;
   startDate?: string;
   endDate?: string;
+  order?: number;
+  youtubeUrl?: string;
   tags: string[];
   images: string[];
   description: string;

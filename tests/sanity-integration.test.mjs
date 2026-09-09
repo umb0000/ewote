@@ -19,6 +19,11 @@ test('project query resolves image URLs and retains local fallback content', () 
     'utf8',
   );
   assert.match(source, /images\[\]\.asset->url/);
+  assert.match(source, /homeVideo\.asset->url/);
+  assert.match(source, /workVideo\.asset->url/);
+  assert.match(source, /featuredProject->/);
+  assert.match(source, /youtubeUrl/);
+  assert.match(source, /coalesce\(order,\s*9999\)/);
   assert.match(source, /fallbackProjects/);
   assert.match(source, /getProjects/);
   assert.match(source, /getProject/);
