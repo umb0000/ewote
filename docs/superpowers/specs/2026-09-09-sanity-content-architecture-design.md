@@ -30,7 +30,7 @@ Create one `siteSettings` document with the fixed document ID `siteSettings`. Sa
 
 ### Project
 
-Keep the current `project` type and add `order` for manual ordering. Existing `title`, `slug`, `subtitle`, `startDate`, `endDate`, legacy `date`, `tags`, `images`, and `description` fields remain. Sanity's draft/published state controls visibility, so no duplicate published flag is added.
+Keep the current `project` type and add `order` for manual ordering and `youtubeUrl` for an optional embedded film. Existing `title`, `slug`, `subtitle`, `startDate`, `endDate`, legacy `date`, `tags`, `images`, and `description` fields remain. Sanity's draft/published state controls visibility, so no duplicate published flag is added.
 
 The first image remains the cover. Remaining images form the detail gallery. Legacy `date` remains readable until existing content is migrated.
 
@@ -47,6 +47,7 @@ Extend the central Sanity adapter instead of querying from components.
 - Image fields resolve to CDN URLs.
 - File fields resolve to URLs for the existing video component.
 - The featured project resolves to the existing `Project` shape.
+- YouTube watch, short, and Shorts URLs normalize to a privacy-enhanced embed URL. Missing or invalid values produce no player.
 
 Components receive complete view data and contain no Sanity-specific query logic.
 
@@ -62,6 +63,12 @@ Existing hardcoded media and copy remain as emergency defaults. Each missing Sit
 - Root metadata reads SEO title, description, and optional Open Graph image during the static build.
 - Existing animation, filtering, navigation, and responsive behavior remain unchanged.
 
+### Project detail layout
+
+The desktop introduction uses the existing two-column horizontal coordinates across two rows. The description occupies the left column of the first row while its right column stays empty. Date and tags occupy the right column of the following row while its left column stays empty. The hardcoded `DEMO PROJECT` label is removed.
+
+On narrow screens, the empty grid cells collapse: description appears first, followed by date and tags. When `youtubeUrl` is valid, a responsive 16:9 YouTube player appears after the introduction and before the image gallery. A project without a valid URL has no reserved video space.
+
 ## Publishing flow
 
 The site remains a static export. Until Git-based automatic deployment is configured, the operator publishes in Sanity and runs the existing site build and Wrangler deployment. The future automated path is Sanity publish → webhook → Cloudflare Deploy Hook → Git-based build → production deployment.
@@ -71,9 +78,9 @@ The site remains a static export. Until Git-based automatic deployment is config
 - Missing or unreachable settings return local defaults.
 - Each missing asset uses its corresponding fallback.
 - An empty or failed project query returns fallback projects.
-- Invalid project records are excluded during normalization.
+- Invalid project records are excluded during normalization, while an invalid YouTube URL only suppresses that project's player.
 - Video playback failures keep the existing status treatment.
 
 ## Verification
 
-Tests cover the singleton schema, image/file/reference queries, field-level fallbacks, project ordering, legacy dates, page consumption, and existing filters and motion. Both the website and Studio production builds must pass.
+Tests cover the singleton schema, image/file/reference queries, field-level fallbacks, project ordering, legacy dates, supported YouTube URL normalization, optional player rendering, detail-grid placement, page consumption, and existing filters and motion. Both the website and Studio production builds must pass.
