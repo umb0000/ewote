@@ -5,10 +5,9 @@ import { filterProjects } from '../../lib/filter.mjs';
 import { formatProjectPeriod } from '../../lib/project-period.mjs';
 export default function WorkList({ projects }: { projects: Project[] }) {
   const [tag, setTag] = useState('ALL');
-  const [paused, setPaused] = useState(false);
   const selected = filterProjects(projects, tag);
   return (
-    <section className={'work-list' + (paused ? ' paused' : '')}>
+    <section className="work-list">
       <div className="filter-bar">
         <fieldset className="filters" aria-label="프로젝트 태그">
           {tags.map((t) => (
@@ -17,13 +16,6 @@ export default function WorkList({ projects }: { projects: Project[] }) {
             </button>
           ))}
         </fieldset>
-        <button
-          className="motion-toggle"
-          onClick={() => setPaused(!paused)}
-          aria-pressed={paused}
-        >
-          {paused ? '▶ MOTION' : 'Ⅱ MOTION'}
-        </button>
       </div>
       <output className="result-count">
         {String(selected.length).padStart(2, '0')} PROJECTS / {tag}
@@ -46,7 +38,7 @@ export default function WorkList({ projects }: { projects: Project[] }) {
               href={'/work/' + p.slug + '/'}
               aria-label={p.title + ' 프로젝트 보기'}
             >
-              <div className={'track ' + (i % 2 ? 'reverse' : '')}>
+              <div className="track">
                 {[0, 1].map((copy) => (
                   <div
                     className="track-group"

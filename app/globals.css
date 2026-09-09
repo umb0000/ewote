@@ -299,13 +299,6 @@ button {
   background: #55504c;
   color: white;
 }
-.motion-toggle {
-  background: transparent;
-  border: 0;
-  font-size: 11px;
-  white-space: nowrap;
-  padding: 12px 0;
-}
 .result-count {
   color: var(--muted);
   font-size: 11px;
@@ -360,15 +353,6 @@ button {
   width: clamp(240px, 31vw, 600px);
   height: clamp(170px, 20vw, 375px);
   background: #181818;
-}
-.reverse {
-  animation-direction: reverse;
-  animation-duration: 42s;
-}
-.project-strip:hover .track,
-.project-strip:focus-visible .track,
-.paused .track {
-  animation-play-state: paused;
 }
 .project-tags {
   display: flex;
@@ -567,9 +551,6 @@ footer h2 {
   .filters button {
     font-size: 10px;
     padding: 8px;
-  }
-  .motion-toggle {
-    font-size: 9px;
   }
   .project-heading > a {
     gap: 8px;
