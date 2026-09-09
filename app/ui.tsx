@@ -24,9 +24,7 @@ export function Header() {
           <a href="/#contact">CONTACT</a>
         </nav>
         <span className="header-index">
-          CREATIVE
-          <br />
-          COLLECTIVE
+          <img src="/favicon_ewote.svg" alt="EWOTE symbol" />
         </span>
       </header>
     </>

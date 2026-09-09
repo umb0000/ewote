@@ -106,10 +106,13 @@ button {
   border-bottom: 1px solid white;
 }
 .header-index {
-  font-size: 10px;
-  line-height: 1.15;
-  text-align: right;
-  letter-spacing: 0.02em;
+  display: block;
+  justify-self: end;
+  width: 42px;
+}
+.header-index img {
+  width: 100%;
+  height: auto;
 }
 .home-hero {
   height: 100vh;
