@@ -287,15 +287,11 @@ button {
 .filters button,
 .project-tags button {
   border: 0;
-  background: #302b2a;
-  color: #c3b7b2;
+  background: #303030;
+  color: #c4c4c4;
   font-size: 12px;
   padding: 8px 11px;
   border-radius: 0;
-}
-.filters button {
-  background: #303030;
-  color: #c4c4c4;
 }
 .filters button[aria-pressed='true'] {
   background: #f5f5f2;
@@ -303,11 +299,8 @@ button {
 }
 .filters button:hover,
 .project-tags button:hover {
-  background: #55504c;
-  color: white;
-}
-.filters button:hover {
   background: #555;
+  color: white;
 }
 .result-count {
   color: var(--muted);

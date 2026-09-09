@@ -25,4 +25,8 @@ test('work filter controls use a zero-saturation palette', () => {
 
   assert.match(styles, /\.filters button[\s\S]*background:\s*#303030/);
   assert.match(styles, /\.filters button[\s\S]*color:\s*#c4c4c4/);
+  assert.match(
+    styles,
+    /\.project-tags button\s*\{[^}]*background:\s*#303030[^}]*color:\s*#c4c4c4/,
+  );
 });
