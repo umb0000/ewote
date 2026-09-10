@@ -76,6 +76,9 @@ export function Film({
         muted
         loop
         playsInline
+        disablePictureInPicture
+        disableRemotePlayback
+        controlsList="nodownload noremoteplayback nopictureinpicture"
         preload="metadata"
         onError={() => setFailed(true)}
         aria-label={label}

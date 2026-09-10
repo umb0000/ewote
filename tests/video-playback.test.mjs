@@ -8,6 +8,9 @@ const schema = readFileSync(new URL('../studio/schemaTypes/siteSettings.ts', imp
 test('films autoplay silently and loop without playback controls', () => {
   assert.match(source, /\bmuted\b/);
   assert.match(source, /\bloop\b/);
+  assert.match(source, /disablePictureInPicture/);
+  assert.match(source, /disableRemotePlayback/);
+  assert.match(source, /controlsList="nodownload noremoteplayback nopictureinpicture"/);
   assert.doesNotMatch(source, /className="video-control"/);
 });
 
