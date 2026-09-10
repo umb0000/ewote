@@ -1,6 +1,6 @@
 'use client';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { defaultSiteSettings, type SiteSettings } from '../lib/site-settings.mjs';
 
 export function Header() {
@@ -42,12 +42,36 @@ export function Film({
   label: string;
 }) {
   const [failed, setFailed] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          void video.play().catch(() => undefined);
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.25 },
+    );
+
+    observer.observe(video);
+    return () => {
+      observer.disconnect();
+      video.pause();
+    };
+  }, [src]);
+
   return (
     <div className="film">
       <video
+        ref={videoRef}
         src={src}
         poster={poster}
-        autoPlay
         muted
         loop
         playsInline
