@@ -105,8 +105,10 @@ export function Footer({ settings = defaultSiteSettings }: { settings?: SiteSett
           {settings.contactHeadingLines.map((line, index) => <span key={line}>{index > 0 && <br />}{line}</span>)}
         </h2>
         <p className="contact-placeholder">{settings.contactMessage}</p>
-        {settings.contactEmail && <a href={`mailto:${settings.contactEmail}`}>{settings.contactEmail}</a>}
-        {settings.socialLinks.map((link) => <a key={link.url} href={link.url} target="_blank" rel="noreferrer">{link.label}</a>)}
+        <div className="contact-links">
+          {settings.contactEmail && <a className="contact-link" href={`mailto:${settings.contactEmail}`}>{settings.contactEmail}</a>}
+          {settings.socialLinks.map((link) => <a className="contact-link" key={link.url} href={link.url} target="_blank" rel="noreferrer">{link.label}</a>)}
+        </div>
       </div>
       <div className="footer-line">
         <a href="/" className="wordmark">

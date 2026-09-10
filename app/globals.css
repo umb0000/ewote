@@ -445,6 +445,15 @@ footer h2 {
   font-size: 14px;
   margin-top: 25px;
 }
+.contact-links {
+  display: grid;
+  justify-items: start;
+  gap: 5px;
+  margin-top: 8px;
+}
+.contact-link {
+  display: block;
+}
 .footer-line {
   margin-top: 95px;
   display: flex;

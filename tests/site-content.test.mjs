@@ -16,6 +16,8 @@ test('pages consume normalized Sanity site settings', () => {
   assert.match(work, /settings\.workTitle/);
   assert.match(ui, /contactHeadingLines/);
   assert.match(ui, /socialLinks/);
+  assert.match(ui, /className="contact-links"/);
+  assert.match(ui, /className="contact-link"/);
   assert.match(layout, /generateMetadata/);
   assert.match(layout, /settings\.seoTitle/);
 });
