@@ -18,9 +18,6 @@ export default function WorkList({ projects }: { projects: Project[] }) {
           ))}
         </fieldset>
       </div>
-      <output className="result-count">
-        {String(selected.length).padStart(2, '0')} PROJECTS / {tag}
-      </output>
       {selected.length === 0 ? (
         <p>해당 태그의 프로젝트가 없습니다.</p>
       ) : (
