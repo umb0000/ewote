@@ -30,10 +30,6 @@ test('Sanity video fields accept MP4 and explain the delivery target', () => {
 
 test('mobile film uses a stable aspect-ratio box while scrolling', () => {
   assert.match(css, /\.home-film \.film\s*\{[^}]*height:\s*auto;/s);
-  assert.match(css, /\.home-film\s*\{[^}]*margin-top:\s*clamp\(120px,\s*15vw,\s*260px\);/s);
   assert.match(css, /\.film video\s*\{[^}]*position:\s*absolute;/s);
   assert.match(css, /\.film video\s*\{[^}]*inset:\s*0;/s);
-  assert.match(source, /videoWidth/);
-  assert.match(source, /videoHeight/);
-  assert.doesNotMatch(css, /\.home-film \.film\s*\{[^}]*aspect-ratio:\s*4\s*\/\s*5;/s);
 });

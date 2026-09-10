@@ -167,7 +167,6 @@ button {
 }
 .home-film {
   position: relative;
-  margin-top: clamp(120px, 15vw, 260px);
 }
 .film {
   position: relative;
@@ -535,7 +534,7 @@ footer h2 {
     font-size: 9px;
   }
   .home-film .film {
-    aspect-ratio: 16/9;
+    aspect-ratio: 4/5;
   }
   .about {
     padding: 65px 18px 35px;
