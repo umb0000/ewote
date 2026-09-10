@@ -43,6 +43,7 @@ export function Film({
   label: string;
 }) {
   const [failed, setFailed] = useState(false);
+  const [aspectRatio, setAspectRatio] = useState('16 / 9');
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -68,7 +69,7 @@ export function Film({
   }, [src]);
 
   return (
-    <div className="film">
+    <div className="film" style={{ aspectRatio }}>
       <video
         ref={videoRef}
         src={src}
@@ -80,6 +81,12 @@ export function Film({
         disableRemotePlayback
         controlsList="nodownload noremoteplayback nopictureinpicture"
         preload="metadata"
+        onLoadedMetadata={(event) => {
+          const video = event.currentTarget;
+          if (video.videoWidth && video.videoHeight) {
+            setAspectRatio(`${video.videoWidth} / ${video.videoHeight}`);
+          }
+        }}
         onError={() => setFailed(true)}
         aria-label={label}
       />
