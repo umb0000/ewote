@@ -9,6 +9,15 @@ test('site settings use field-level fallbacks', () => {
   assert.equal(result.homeVideo, defaultSiteSettings.homeVideo);
 });
 
+test('missing media stays empty instead of showing demo assets', () => {
+  const result = normalizeSiteSettings(undefined);
+  assert.equal(result.homeVideo, '');
+  assert.equal(result.homePoster, '');
+  assert.equal(result.workVideo, '');
+  assert.equal(result.workPoster, '');
+  assert.doesNotMatch(JSON.stringify(defaultSiteSettings), /res\.cloudinary\.com\/demo/);
+});
+
 test('site settings keep valid arrays and reject incomplete social links', () => {
   const result = normalizeSiteSettings({
     homeIntroLines: ['LINE ONE', 'LINE TWO'],

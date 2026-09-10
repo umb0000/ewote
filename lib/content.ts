@@ -1,10 +1,3 @@
-// Replace these demo URLs with your owned Cloudinary delivery URLs before launch.
-export const media = {
-  homeVideo: 'https://res.cloudinary.com/demo/video/upload/q_auto/dog.mp4',
-  workVideo: 'https://res.cloudinary.com/demo/video/upload/q_auto/dog.mp4',
-  poster:
-    'https://res.cloudinary.com/demo/video/upload/so_0,w_1600,q_auto/dog.jpg',
-};
 const photo = (id: string) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1000&q=80`;
 const sea = photo('photo-1518837695005-2083093ee35b');

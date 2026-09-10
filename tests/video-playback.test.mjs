@@ -15,6 +15,10 @@ test('films autoplay silently and loop without playback controls', () => {
   assert.doesNotMatch(source, /className="video-control"/);
 });
 
+test('films render a black empty frame when no Sanity video is configured', () => {
+  assert.match(source, /\{src\s*&&\s*\(/);
+});
+
 test('films only play while visible and pause outside the viewport', () => {
   assert.match(source, /IntersectionObserver/);
   assert.match(source, /video\.play\(\)/);

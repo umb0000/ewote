@@ -70,26 +70,28 @@ export function Film({
 
   return (
     <div className="film" style={{ aspectRatio }}>
-      <video
-        ref={videoRef}
-        src={src}
-        poster={sanityImageUrl(poster, 1920, 80)}
-        muted
-        loop
-        playsInline
-        disablePictureInPicture
-        disableRemotePlayback
-        controlsList="nodownload noremoteplayback nopictureinpicture"
-        preload="metadata"
-        onLoadedMetadata={(event) => {
-          const video = event.currentTarget;
-          if (video.videoWidth && video.videoHeight) {
-            setAspectRatio(`${video.videoWidth} / ${video.videoHeight}`);
-          }
-        }}
-        onError={() => setFailed(true)}
-        aria-label={label}
-      />
+      {src && (
+        <video
+          ref={videoRef}
+          src={src}
+          poster={poster ? sanityImageUrl(poster, 1920, 80) : undefined}
+          muted
+          loop
+          playsInline
+          disablePictureInPicture
+          disableRemotePlayback
+          controlsList="nodownload noremoteplayback nopictureinpicture"
+          preload="metadata"
+          onLoadedMetadata={(event) => {
+            const video = event.currentTarget;
+            if (video.videoWidth && video.videoHeight) {
+              setAspectRatio(`${video.videoWidth} / ${video.videoHeight}`);
+            }
+          }}
+          onError={() => setFailed(true)}
+          aria-label={label}
+        />
+      )}
       {failed && <span className="video-status">영상 준비 중</span>}
     </div>
   );
