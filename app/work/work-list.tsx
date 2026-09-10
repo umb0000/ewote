@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { tags, type Project } from '../../lib/content';
 import { filterProjects } from '../../lib/filter.mjs';
 import { formatProjectPeriod } from '../../lib/project-period.mjs';
+import { sanityImageSrcSet, sanityImageUrl } from '../../lib/image-url.mjs';
 export default function WorkList({ projects }: { projects: Project[] }) {
   const [tag, setTag] = useState('ALL');
   const selected = filterProjects(projects, tag);
@@ -48,7 +49,9 @@ export default function WorkList({ projects }: { projects: Project[] }) {
                     {p.images.map((src, j) => (
                       <img
                         key={j}
-                        src={src}
+                        src={sanityImageUrl(src, 960, 78)}
+                        srcSet={sanityImageSrcSet(src, [480, 960], 78)}
+                        sizes="(max-width: 700px) 70vw, 40vw"
                         alt={copy === 0 ? `${p.title} 이미지 ${j + 1}` : ''}
                         loading="lazy"
                         width="640"

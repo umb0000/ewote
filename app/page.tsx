@@ -1,6 +1,7 @@
 import { Header, Film, Footer } from './ui';
 import { getProjects, getSiteSettings } from '../lib/sanity';
 import { LetterPile } from './letter-pile';
+import { sanityImageSrcSet, sanityImageUrl } from '../lib/image-url.mjs';
 export default async function Home() {
   const [projects, settings] = await Promise.all([getProjects(), getSiteSettings()]);
   const featured = settings.featuredProject || projects[0];
@@ -36,7 +37,9 @@ export default async function Home() {
         <section className="featured">
           <a href={'/work/' + featured.slug + '/'}>
             <img
-              src={featured.images[0]}
+              src={sanityImageUrl(featured.images[0], 1600, 80)}
+              srcSet={sanityImageSrcSet(featured.images[0])}
+              sizes="100vw"
               alt={featured.title}
               loading="lazy"
             />

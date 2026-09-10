@@ -2,6 +2,7 @@
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import { defaultSiteSettings, type SiteSettings } from '../lib/site-settings.mjs';
+import { sanityImageUrl } from '../lib/image-url.mjs';
 
 export function Header() {
   const path = usePathname();
@@ -71,7 +72,7 @@ export function Film({
       <video
         ref={videoRef}
         src={src}
-        poster={poster}
+        poster={sanityImageUrl(poster, 1920, 80)}
         muted
         loop
         playsInline

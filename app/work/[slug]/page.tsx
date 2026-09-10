@@ -3,6 +3,7 @@ import { getProject, getProjects, getSiteSettings } from '../../../lib/sanity';
 import { Header, Footer } from '../../ui';
 import { formatProjectPeriod } from '../../../lib/project-period.mjs';
 import { getYouTubeEmbedUrl } from '../../../lib/youtube.mjs';
+import { sanityImageSrcSet, sanityImageUrl } from '../../../lib/image-url.mjs';
 export async function generateStaticParams() {
   const projects = await getProjects();
   return projects.map((p) => ({ slug: p.slug }));
@@ -30,7 +31,12 @@ export default async function Detail({
       <Header />
       <main id="main">
         <div className="detail-cover">
-          <img src={p.images[0]} alt={p.title} />
+          <img
+            src={sanityImageUrl(p.images[0], 1920, 82)}
+            srcSet={sanityImageSrcSet(p.images[0], [768, 1280, 1920], 82)}
+            sizes="100vw"
+            alt={p.title}
+          />
         </div>
         <section className="detail-intro">
           <a href="/work/">← ALL WORK</a>
@@ -57,7 +63,9 @@ export default async function Detail({
           {p.images.slice(1).map((src, i) => (
             <img
               key={i}
-              src={src}
+              src={sanityImageUrl(src, 1600, 80)}
+              srcSet={sanityImageSrcSet(src)}
+              sizes="100vw"
               alt={`${p.title} 상세 이미지 ${i + 1}`}
               loading="lazy"
             />
