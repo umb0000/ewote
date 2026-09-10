@@ -404,6 +404,7 @@ button {
 .youtube-embed {
   width: 100%;
   aspect-ratio: 16 / 9;
+  margin-block: 28.125vw;
   background: #000;
 }
 .youtube-embed iframe {
@@ -414,7 +415,7 @@ button {
 }
 .detail-gallery {
   display: grid;
-  gap: 15px;
+  gap: 0;
 }
 .detail-gallery img {
   max-height: 900px;
