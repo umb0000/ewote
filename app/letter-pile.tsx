@@ -22,6 +22,7 @@ export function LetterPile() {
     const timers: ReturnType<typeof setTimeout>[] = [];
     let frame = 0;
     let lastTime = performance.now();
+    let lastObservedWidth = container.getBoundingClientRect().width;
 
     const buildWorld = () => {
       Matter.Composite.clear(engine.world, false);
@@ -167,7 +168,12 @@ export function LetterPile() {
 
     buildWorld();
     frame = requestAnimationFrame(update);
-    const observer = new ResizeObserver(buildWorld);
+    const observer = new ResizeObserver(([entry]) => {
+      const width = entry?.contentRect.width ?? container.getBoundingClientRect().width;
+      if (Math.abs(width - lastObservedWidth) < 2) return;
+      lastObservedWidth = width;
+      buildWorld();
+    });
     observer.observe(container);
 
     return () => {

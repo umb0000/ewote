@@ -66,3 +66,13 @@ test('glyph collision boxes trim invisible font leading', () => {
 
   assert.match(source, /bodyHeight\s*=\s*rect\.height\s*\*\s*0\.82/);
 });
+
+test('mobile viewport height changes do not rebuild the physics world', () => {
+  const source = readFileSync(
+    new URL('../app/letter-pile.tsx', import.meta.url),
+    'utf8',
+  );
+
+  assert.match(source, /lastObservedWidth/);
+  assert.match(source, /Math\.abs\(width\s*-\s*lastObservedWidth\)\s*<\s*2/);
+});

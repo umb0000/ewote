@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 
 const source = readFileSync(new URL('../app/ui.tsx', import.meta.url), 'utf8');
 const schema = readFileSync(new URL('../studio/schemaTypes/siteSettings.ts', import.meta.url), 'utf8');
+const css = readFileSync(new URL('../app/globals.css', import.meta.url), 'utf8');
 
 test('films autoplay silently and loop without playback controls', () => {
   assert.match(source, /\bmuted\b/);
@@ -25,4 +26,10 @@ test('Sanity video fields accept MP4 and explain the delivery target', () => {
   assert.match(schema, /accept:\s*'video\/mp4'/);
   assert.match(schema, /1080p/);
   assert.match(schema, /10–30MB/);
+});
+
+test('mobile film uses a stable aspect-ratio box while scrolling', () => {
+  assert.match(css, /\.home-film \.film\s*\{[^}]*height:\s*auto;/s);
+  assert.match(css, /\.film video\s*\{[^}]*position:\s*absolute;/s);
+  assert.match(css, /\.film video\s*\{[^}]*inset:\s*0;/s);
 });

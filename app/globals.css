@@ -176,10 +176,12 @@ button {
   overflow: hidden;
 }
 .film video {
+  position: absolute;
+  inset: 0;
   height: 100%;
-  min-height: 240px;
 }
 .home-film .film {
+  height: auto;
   aspect-ratio: 16/9;
 }
 .video-status {
