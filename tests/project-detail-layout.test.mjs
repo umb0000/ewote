@@ -21,3 +21,7 @@ test('YouTube embeds have half their height as vertical margin', () => {
   assert.match(css, /\.youtube-embed\s*\{[^}]*margin-block:\s*28\.125vw;/s);
   assert.match(css, /\.detail-gallery\s*\{[^}]*gap:\s*0;/s);
 });
+test('project detail heading uses the reduced responsive size', () => {
+  const css = readFileSync(new URL('../app/globals.css', import.meta.url), 'utf8');
+  assert.match(css, /\.detail-intro h1\s*\{[^}]*font-size:\s*clamp\(40px,\s*6\.5vw,\s*105px\);/s);
+});
