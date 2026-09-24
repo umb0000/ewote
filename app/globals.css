@@ -289,17 +289,28 @@ button {
 .filters button,
 .project-tags button {
   border: 0;
-  background: #dededb;
-  color: #222;
   font-size: 12px;
   padding: 8px 11px;
   border-radius: 0;
+}
+.filters button {
+  background: transparent;
+  color: var(--fg);
+  transition: background-color 160ms ease, color 160ms ease;
+}
+.project-tags button {
+  background: #dededb;
+  color: #222;
+}
+.filters button:hover,
+.filters button:focus-visible {
+  background: #dededb;
+  color: #080808;
 }
 .filters button[aria-pressed='true'] {
   background: #080808;
   color: #f5f5f2;
 }
-.filters button:hover,
 .project-tags button:hover {
   background: #bdbdb8;
   color: #080808;

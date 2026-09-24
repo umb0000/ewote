@@ -23,10 +23,8 @@ test('work filter controls use a zero-saturation palette', () => {
     'utf8',
   );
 
-  assert.match(styles, /\.filters button[\s\S]*background:\s*#dededb/);
-  assert.match(styles, /\.filters button[\s\S]*color:\s*#222/);
-  assert.match(
-    styles,
-    /\.project-tags button\s*\{[^}]*background:\s*#dededb[^}]*color:\s*#222/,
-  );
+  assert.match(styles, /\.filters button\s*\{[^}]*background:\s*transparent;[^}]*color:\s*var\(--fg\);/s);
+  assert.match(styles, /\.filters button:hover,[\s\S]*?\.filters button:focus-visible\s*\{[^}]*background:\s*#dededb;/s);
+  assert.match(styles, /\.filters button\[aria-pressed='true'\]\s*\{[^}]*background:\s*#080808;[^}]*color:\s*#f5f5f2;/s);
+  assert.match(styles, /\.project-tags button\s*\{[^}]*background:\s*#dededb;[^}]*color:\s*#222;/s);
 });
