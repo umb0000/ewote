@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;700&display=swap');
 :root {
-  color-scheme: dark;
-  --bg: #080808;
-  --fg: #f5f5f2;
-  --muted: #9b9b97;
-  --line: #343432;
+  color-scheme: light;
+  --bg: #f5f5f2;
+  --fg: #080808;
+  --muted: #666663;
+  --line: #d4d4d0;
 }
 * {
   box-sizing: border-box;
@@ -38,8 +38,8 @@ a:focus-visible {
   outline-offset: 5px;
 }
 ::selection {
-  background: #ddd;
-  color: #111;
+  background: #222;
+  color: #f5f5f2;
 }
 img,
 video {
@@ -60,8 +60,8 @@ button {
   top: -100px;
   left: 20px;
   z-index: 99;
-  background: white;
-  color: black;
+  background: #080808;
+  color: #f5f5f2;
   padding: 12px;
 }
 .skip:focus {
@@ -119,7 +119,7 @@ button {
   height: 100svh;
   position: relative;
   overflow: hidden;
-  background: #000;
+  background: var(--bg);
 }
 .letter-pile {
   position: absolute;
@@ -255,7 +255,7 @@ button {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(transparent 45%, #080808);
+  background: linear-gradient(transparent 45%, #f5f5f2);
   pointer-events: none;
 }
 .work-title {
@@ -289,20 +289,20 @@ button {
 .filters button,
 .project-tags button {
   border: 0;
-  background: #303030;
-  color: #c4c4c4;
+  background: #dededb;
+  color: #222;
   font-size: 12px;
   padding: 8px 11px;
   border-radius: 0;
 }
 .filters button[aria-pressed='true'] {
-  background: #f5f5f2;
-  color: #111;
+  background: #080808;
+  color: #f5f5f2;
 }
 .filters button:hover,
 .project-tags button:hover {
-  background: #555;
-  color: white;
+  background: #bdbdb8;
+  color: #080808;
 }
 .result-count {
   color: var(--muted);
@@ -337,7 +337,7 @@ button {
   letter-spacing: -0.025em;
 }
 .project-subtitle {
-  color: #aaa;
+  color: #666663;
   font-size: 12px;
 }
 .project-strip {
@@ -357,7 +357,7 @@ button {
 .track img {
   width: clamp(240px, 31vw, 600px);
   height: clamp(170px, 20vw, 375px);
-  background: #181818;
+  background: #e5e5e2;
 }
 .project-tags {
   display: flex;
@@ -391,7 +391,7 @@ button {
   gap: 12vw;
   font-size: 14px;
   line-height: 1.8;
-  color: #aaa;
+  color: #666663;
 }
 .detail-description {
   grid-column: 1;
@@ -428,7 +428,7 @@ button {
   letter-spacing: -0.04em;
 }
 .all-work:hover {
-  color: #bcbcb8;
+  color: #454542;
 }
 footer {
   padding: 85px 32px 25px;
@@ -442,7 +442,7 @@ footer h2 {
   margin-top: 40px;
 }
 .contact-placeholder {
-  color: #999;
+  color: #666663;
   font-size: 14px;
   margin-top: 25px;
 }

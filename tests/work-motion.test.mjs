@@ -23,10 +23,10 @@ test('work filter controls use a zero-saturation palette', () => {
     'utf8',
   );
 
-  assert.match(styles, /\.filters button[\s\S]*background:\s*#303030/);
-  assert.match(styles, /\.filters button[\s\S]*color:\s*#c4c4c4/);
+  assert.match(styles, /\.filters button[\s\S]*background:\s*#dededb/);
+  assert.match(styles, /\.filters button[\s\S]*color:\s*#222/);
   assert.match(
     styles,
-    /\.project-tags button\s*\{[^}]*background:\s*#303030[^}]*color:\s*#c4c4c4/,
+    /\.project-tags button\s*\{[^}]*background:\s*#dededb[^}]*color:\s*#222/,
   );
 });
