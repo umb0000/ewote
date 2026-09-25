@@ -25,7 +25,6 @@ export default function WorkList({ projects }: { projects: Project[] }) {
           <article className="project-row" key={p.slug}>
             <div className="project-heading">
               <a href={'/work/' + p.slug + '/'}>
-                <span className="project-number">0{i + 1}</span>
                 <h2>{p.title}</h2>
                 <span className="project-subtitle">{p.subtitle}</span>
               </a>
