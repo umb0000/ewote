@@ -234,6 +234,8 @@ button {
 }
 .featured-caption {
   position: absolute;
+  color: white;
+  mix-blend-mode: difference;
   left: 32px;
   bottom: 35px;
 }

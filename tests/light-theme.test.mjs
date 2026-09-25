@@ -18,3 +18,6 @@ test('hero and work controls use the inverted light palette', () => {
   assert.match(css, /\.filters button,[\s\S]*?\.project-tags button\s*\{[^}]*background:\s*#dededb;[^}]*color:\s*#222;/s);
   assert.match(css, /\.filters button\[aria-pressed='true'\]\s*\{[^}]*background:\s*#080808;[^}]*color:\s*#f5f5f2;/s);
 });
+test('featured project caption adapts its contrast over imagery', () => {
+  assert.match(css, /\.featured-caption\s*\{[^}]*color:\s*white;[^}]*mix-blend-mode:\s*difference;/s);
+});
