@@ -28,7 +28,7 @@ export default async function Home() {
         </section>
         <section id="about" className="about">
           <span className="eyebrow">ABOUT</span>
-          <p>{settings.homeIntroLines.map((line, index) => <span key={line}>{index > 0 && <br />}{line}</span>)}</p>
+          <h2>{settings.homeIntroLines.map((line, index) => <span key={line}>{index > 0 && <br />}{line}</span>)}</h2>
           <div className="about-bottom">
             <span>{settings.homeServiceLine}</span>
             <a href="/work/">EXPLORE OUR WORK ↗</a>
