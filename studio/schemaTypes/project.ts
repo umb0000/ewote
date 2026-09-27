@@ -4,7 +4,7 @@ const tagOptions = [
   'VIDEO',
   'BRANDING',
   'ART DIRECTION',
-  'PHOTO',
+  'PHOTOGRAPHY',
   'GRAPHIC DESIGN',
 ].map((tag) => ({ title: tag, value: tag }));
 

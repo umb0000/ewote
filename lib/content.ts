@@ -9,7 +9,7 @@ export const tags = [
   'VIDEO',
   'BRANDING',
   'ART DIRECTION',
-  'PHOTO',
+  'PHOTOGRAPHY',
   'GRAPHIC DESIGN',
 ];
 export type Project = {
@@ -42,7 +42,7 @@ export const projects: Project[] = [
     title: 'STILL MOVING',
     subtitle: '멈춘 순간, 계속되는 움직임',
     date: '2026.01',
-    tags: ['PHOTO', 'ART DIRECTION'],
+    tags: ['PHOTOGRAPHY', 'ART DIRECTION'],
     images: [mountain, forest, desert, sea],
     description:
       '풍경의 리듬을 담은 포트폴리오 샘플입니다. 현재 사진과 텍스트는 화면 구성을 위한 더미 콘텐츠입니다.',

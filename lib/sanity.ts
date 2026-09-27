@@ -1,6 +1,7 @@
 import { createClient } from '@sanity/client';
 import { projects as fallbackProjects, type Project } from './content';
 import { normalizeSiteSettings, type SiteSettings } from './site-settings.mjs';
+import { normalizeProjectTags } from './project-tags.mjs';
 
 export const sanityClient = createClient({
   projectId: 'zb6cjjh8',
@@ -41,9 +42,10 @@ function validProjects(value: unknown): value is Project[] {
 export async function getProjects(): Promise<Project[]> {
   try {
     const result = await sanityClient.fetch<Project[]>(projectsQuery);
-    return validProjects(result) && result.length ? result : fallbackProjects;
+    const projects = validProjects(result) && result.length ? result : fallbackProjects;
+    return projects.map((project) => ({ ...project, tags: normalizeProjectTags(project.tags) }));
   } catch {
-    return fallbackProjects;
+    return fallbackProjects.map((project) => ({ ...project, tags: normalizeProjectTags(project.tags) }));
   }
 }
 
