@@ -10,7 +10,7 @@ test('Studio exposes singleton site settings and project presentation fields', (
   const structure = read('../studio/structure.ts');
   const config = read('../studio/sanity.config.ts');
 
-  for (const field of ['homeVideo','homePoster','homeIntroLines','homeServiceLine','featuredProject','workVideo','workPoster','workEyebrow','workTitle','contactEyebrow','contactHeadingLines','contactMessage','contactEmail','socialLinks','seoTitle','seoDescription','seoImage']) {
+  for (const field of ['homeVideo','homePoster','homeIntroLines','homeAboutMessage','homeServiceLine','featuredProject','workVideo','workPoster','workEyebrow','workTitle','contactEyebrow','contactHeadingLines','contactMessage','contactEmail','socialLinks','seoTitle','seoDescription','seoImage']) {
     assert.match(settings, new RegExp(`name:\\s*'${field}'`));
   }
   assert.match(project, /name:\s*'order'/);

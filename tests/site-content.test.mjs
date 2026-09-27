@@ -12,6 +12,8 @@ test('pages consume normalized Sanity site settings', () => {
   assert.match(home, /getSiteSettings\(\)/);
   assert.match(home, /settings\.homeVideo/);
   assert.match(home, /settings\.featuredProject/);
+  assert.match(home, /settings\.homeAboutMessage/);
+  assert.match(home, /className="about-message"/);
   assert.match(work, /settings\.workVideo/);
   assert.match(work, /settings\.workTitle/);
   assert.match(ui, /contactHeadingLines/);

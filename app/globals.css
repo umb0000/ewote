@@ -214,12 +214,22 @@ button {
   font-weight: 500;
   line-height: 1;
   letter-spacing: -0.065em;
-  margin: 65px 0 100px;
+  margin: 65px 0 0;
+}
+.about-message {
+  color: #666663;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-top: 25px;
+  white-space: pre-line;
 }
 .about-bottom {
-  display: flex;
+  margin-top: 70px;  display: flex;
   justify-content: space-between;
   font-size: 12px;
+}
+.about > h2 + .about-bottom {
+  margin-top: 100px;
 }
 .about-bottom a {
   border-bottom: 1px solid;
@@ -564,11 +574,21 @@ footer h2 {
     min-height: 430px;
   }
   .about > h2 {
-    margin: 55px 0 75px;
+    margin: 55px 0 0;
   }
-  .about-bottom {
-    gap: 15px;
+  .about-message {
+  color: #666663;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-top: 25px;
+  white-space: pre-line;
+}
+.about-bottom {
+  margin-top: 70px;    gap: 15px;
     font-size: 9px;
+  }
+  .about > h2 + .about-bottom {
+    margin-top: 75px;
   }
   .featured img {
     aspect-ratio: 4/3;

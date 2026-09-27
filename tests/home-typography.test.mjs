@@ -19,3 +19,11 @@ test('ABOUT and CONTACT large copy share the same typography', () => {
     assert.equal(value(about), value(contact), `${property} should match`);
   }
 });
+test('ABOUT message uses the same small copy treatment as CONTACT', () => {
+  const aboutMessage = rule('.about-message');
+  const contactMessage = rule('.contact-placeholder');
+  for (const property of ['color', 'font-size']) {
+    const value = ruleBody => ruleBody.match(new RegExp(`${property}:\\s*([^;]+);`))?.[1].trim();
+    assert.equal(value(aboutMessage), value(contactMessage), `${property} should match`);
+  }
+});

@@ -18,7 +18,7 @@ const projectsQuery = `*[_type == "project" && defined(slug.current)] | order(co
 
 const settingsQuery = `*[_type == "siteSettings" && _id == "siteSettings"][0] {
   "homeVideo": homeVideo.asset->url, "homePoster": homePoster.asset->url,
-  homeIntroLines, homeServiceLine,
+  homeIntroLines, homeAboutMessage, homeServiceLine,
   "featuredProject": featuredProject->{${projectFields}},
   "workVideo": workVideo.asset->url, "workPoster": workPoster.asset->url,
   workEyebrow, workTitle, contactEyebrow, contactHeadingLines, contactMessage,

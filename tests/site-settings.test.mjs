@@ -30,3 +30,8 @@ test('home intro normalizes styled Unicode letters so the site font can apply', 
   const result = normalizeSiteSettings({ homeIntroLines: ['𝖤𝖳𝖤𝖱𝖭𝖠𝖫 𝖶𝖨𝖲𝖣𝖮𝖬'] });
   assert.deepEqual(result.homeIntroLines, ['ETERNAL WISDOM']);
 });
+test('ABOUT message is normalized independently from the service line', () => {
+  const result = normalizeSiteSettings({ homeAboutMessage: '  Small about copy.  ' });
+  assert.equal(result.homeAboutMessage, 'Small about copy.');
+  assert.equal(normalizeSiteSettings(undefined).homeAboutMessage, '');
+});

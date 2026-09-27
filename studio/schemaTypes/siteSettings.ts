@@ -19,6 +19,7 @@ export const siteSettingsType = defineType({
     defineField({ name: 'homeVideo', title: 'HOME video', description: videoDescription, type: 'file', options: { accept: 'video/mp4' }, validation: maxVideoSize }),
     defineField({ name: 'homePoster', title: 'HOME poster', type: 'image', options: { hotspot: true } }),
     defineField({ name: 'homeIntroLines', title: 'HOME introduction', type: 'array', of: [{ type: 'string' }], validation: (rule) => rule.max(2) }),
+    defineField({ name: 'homeAboutMessage', title: 'ABOUT message', type: 'text', rows: 3 }),
     defineField({ name: 'homeServiceLine', title: 'HOME service line', type: 'string' }),
     defineField({ name: 'featuredProject', title: 'Featured project', type: 'reference', to: [{ type: 'project' }] }),
     defineField({ name: 'workVideo', title: 'WORK video', description: videoDescription, type: 'file', options: { accept: 'video/mp4' }, validation: maxVideoSize }),
