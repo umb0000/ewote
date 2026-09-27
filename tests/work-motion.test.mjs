@@ -28,3 +28,11 @@ test('work filter controls use a zero-saturation palette', () => {
   assert.match(styles, /\.filters button\[aria-pressed='true'\]\s*\{[^}]*background:\s*#080808;[^}]*color:\s*#f5f5f2;/s);
   assert.match(styles, /\.project-tags button\s*\{[^}]*background:\s*#dededb;[^}]*color:\s*#222;/s);
 });
+test('work strips reveal a centered EWOTE mark over a dark overlay', () => {
+  const styles = readFileSync(new URL('../app/globals.css', import.meta.url), 'utf8');
+  assert.match(styles, /\.project-strip\s*\{[^}]*position:\s*relative;[^}]*isolation:\s*isolate;/s);
+  assert.match(styles, /\.project-strip::before\s*\{[^}]*background:\s*rgb\(8 8 8 \/ 62%\);[^}]*opacity:\s*0;/s);
+  assert.match(styles, /\.project-strip::after\s*\{[^}]*background:[^;]*url\('\/favicon_ewote\.svg'\)[^;]*;[^}]*opacity:\s*0;/s);
+  assert.match(styles, /\.project-strip:hover::before,[\s\S]*?\.project-strip:focus-visible::before,[\s\S]*?\.project-strip:active::before\s*\{[^}]*opacity:\s*1;/s);
+  assert.match(styles, /\.project-strip:hover::after,[\s\S]*?\.project-strip:focus-visible::after,[\s\S]*?\.project-strip:active::after\s*\{[^}]*opacity:\s*1;/s);
+});
