@@ -209,7 +209,7 @@ button {
   font-size: 11px;
   letter-spacing: 0.07em;
 }
-.about > p {
+.about > h2 {
   font-size: clamp(34px, 6vw, 95px);
   font-weight: 500;
   line-height: 1;
@@ -563,7 +563,7 @@ footer h2 {
     padding: 65px 18px 35px;
     min-height: 430px;
   }
-  .about > p {
+  .about > h2 {
     margin: 55px 0 75px;
   }
   .about-bottom {

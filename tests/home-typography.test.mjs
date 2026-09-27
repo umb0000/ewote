@@ -12,7 +12,7 @@ function rule(selector) {
 }
 
 test('ABOUT and CONTACT large copy share the same typography', () => {
-  const about = rule('.about > p');
+  const about = rule('.about > h2');
   const contact = rule('footer h2');
   for (const property of ['font-size', 'font-weight', 'line-height', 'letter-spacing']) {
     const value = ruleBody => ruleBody.match(new RegExp(`${property}:\\s*([^;]+);`))?.[1].trim();

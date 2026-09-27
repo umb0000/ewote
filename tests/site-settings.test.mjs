@@ -26,3 +26,7 @@ test('site settings keep valid arrays and reject incomplete social links', () =>
   assert.deepEqual(result.homeIntroLines, ['LINE ONE', 'LINE TWO']);
   assert.deepEqual(result.socialLinks, [{ label: 'Instagram', url: 'https://instagram.com/ewote' }]);
 });
+test('home intro normalizes styled Unicode letters so the site font can apply', () => {
+  const result = normalizeSiteSettings({ homeIntroLines: ['𝖤𝖳𝖤𝖱𝖭𝖠𝖫 𝖶𝖨𝖲𝖣𝖮𝖬'] });
+  assert.deepEqual(result.homeIntroLines, ['ETERNAL WISDOM']);
+});
