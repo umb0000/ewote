@@ -36,3 +36,8 @@ test('work strips reveal a centered EWOTE mark over a dark overlay', () => {
   assert.match(styles, /\.project-strip:hover::before,[\s\S]*?\.project-strip:focus-visible::before,[\s\S]*?\.project-strip:active::before\s*\{[^}]*opacity:\s*1;/s);
   assert.match(styles, /\.project-strip:hover::after,[\s\S]*?\.project-strip:focus-visible::after,[\s\S]*?\.project-strip:active::after\s*\{[^}]*opacity:\s*1;/s);
 });
+test('mobile project tags use one consistent grid size', () => {
+  const styles = readFileSync(new URL('../app/globals.css', import.meta.url), 'utf8');
+  assert.match(styles, /@media \(max-width: 700px\)[\s\S]*?\.project-tags\s*\{[^}]*display:\s*grid;[^}]*grid-template-columns:\s*repeat\(3, minmax\(0, 1fr\)\);/s);
+  assert.match(styles, /@media \(max-width: 700px\)[\s\S]*?\.project-tags button\s*\{[^}]*width:\s*100%;[^}]*min-height:\s*44px;/s);
+});

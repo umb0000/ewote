@@ -673,6 +673,21 @@ footer h2 {
     width: 66vw;
     height: 44vw;
   }
+  .project-tags {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 5px;
+  }
+  .project-tags button {
+    width: 100%;
+    min-height: 44px;
+    padding: 6px 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.15;
+    text-align: center;
+  }
   .detail-intro {
     padding: 30px 18px 55px;
   }
